@@ -72,8 +72,8 @@ function TransactionForm({ onAdd }) {
         <div className={styles.field}>
           <label>Tipo</label>
           <select name="type" value={form.type} onChange={handleChange}>
-            <option value="income">💚 Receita</option>
-            <option value="expense">🔴 Despesa</option>
+            <option value="income">💵 Receita</option>
+            <option value="expense">🧾 Despesa</option>
           </select>
         </div>
 

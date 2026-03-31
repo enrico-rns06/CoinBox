@@ -3,6 +3,7 @@ import Header from './components/Header/Header'
 import Summary from './components/Summary/Summary'
 import TransactionList from './components/TransactionList/TransactionList'
 import TransactionForm from './components/TransactionForm/TransactionForm'
+import Chart from './components/Chart/Chart'
 import styles from './App.module.css'
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           </div>
           <div className={styles.right}>
             <TransactionForm onAdd={handleAdd} />
+            <Chart transactions={transactions} />
           </div>
         </div>
       </main>
