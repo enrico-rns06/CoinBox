@@ -1,13 +1,20 @@
 import styles from './Header.module.css'
 
-function Header() {
+function Header({ user, onLogout }) {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
         <span className={styles.logoIcon}>🪙</span>
         <span className={styles.logoText}>CoinBox</span>
       </div>
-      <span className={styles.subtitle}>Controle Financeiro Pessoal</span>
+      <div className={styles.right}>
+        {user && <span className={styles.userName}>Olá, {user.name}!</span>}
+        {onLogout && (
+          <button className={styles.logoutBtn} onClick={onLogout}>
+            Sair
+          </button>
+        )}
+      </div>
     </header>
   )
 }

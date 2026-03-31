@@ -24,7 +24,29 @@
   letter-spacing: 1px;
 }
 
-.subtitle {
-  font-size: 0.85rem;
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.userName {
+  font-size: 0.9rem;
   color: var(--text-secondary);
+}
+
+.logoutBtn {
+  background: none;
+  border: 1px solid var(--accent-yellow);
+  color: var(--accent-yellow);
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.logoutBtn:hover {
+  background-color: var(--accent-yellow);
+  color: #0C2985;
 }
