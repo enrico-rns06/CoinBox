@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #0a1e5e;
+  --bg-secondary: #0C2985;
+  --bg-card: #0e3099;
+  --accent-yellow: #EEC03E;
+  --accent-red: #ff5c5c;
+  --accent-light: #E2E5E7;
+  --text-primary: #E2E5E7;
+  --text-secondary: #a0aec0;
+  --border: #1a3a9e;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}

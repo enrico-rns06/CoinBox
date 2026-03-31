@@ -1,0 +1,33 @@
+.card {
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border: 1px solid var(--border);
+}
+
+.label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.value {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.balance .value {
+  color: var(--accent-yellow);
+}
+
+.income .value {
+  color: #00c896;
+}
+
+.expense .value {
+  color: var(--accent-red);
+}
