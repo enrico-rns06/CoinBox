@@ -37,7 +37,7 @@ function Login() {
           <span>🪙</span>
           <h1>CoinBox</h1>
         </div>
-        <p className={styles.subtitle}>Entre na sua conta</p>
+        <p className={styles.subtitle}>Organize suas finanças</p>
 
         {error && <div className={styles.error}>{error}</div>}
 
