@@ -5,9 +5,11 @@ import styles from './Register.module.css'
 
 function Register() {
   const navigate = useNavigate()
-  const [form, setForm] = useState({ name: '', email: '', password: '' })
+  const [form, setForm] = useState({ name: '', email: '', password: '', confirmPassword: '' })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirm, setShowConfirm] = useState(false)
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -16,9 +18,24 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
+
+    if (form.password !== form.confirmPassword) {
+      setError('As senhas não coincidem.')
+      return
+    }
+
+    if (form.password.length < 6) {
+      setError('A senha deve ter pelo menos 6 caracteres.')
+      return
+    }
+
     setLoading(true)
     try {
-      const { data } = await api.post('/auth/register', form)
+      const { data } = await api.post('/auth/register', {
+        name: form.name,
+        email: form.email,
+        password: form.password,
+      })
       localStorage.setItem('coinbox_token', data.token)
       localStorage.setItem('coinbox_user', JSON.stringify(data.user))
       navigate('/dashboard')
@@ -83,14 +100,46 @@ function Register() {
             <label>Nome</label>
             <input type="text" name="name" value={form.name} onChange={handleChange} placeholder="Seu nome" required />
           </div>
+
           <div className={styles.field}>
             <label>Email</label>
             <input type="email" name="email" value={form.email} onChange={handleChange} placeholder="seu@email.com" required />
           </div>
+
           <div className={styles.field}>
             <label>Senha</label>
-            <input type="password" name="password" value={form.password} onChange={handleChange} placeholder="••••••••" required />
+            <div className={styles.inputWrapper}>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                value={form.password}
+                onChange={handleChange}
+                placeholder="Mínimo 6 caracteres"
+                required
+              />
+              <button type="button" className={styles.eyeBtn} onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? '👁️' : '🫥' }
+              </button>
+            </div>
           </div>
+
+          <div className={styles.field}>
+            <label>Confirmar senha</label>
+            <div className={styles.inputWrapper}>
+              <input
+                type={showConfirm ? 'text' : 'password'}
+                name="confirmPassword"
+                value={form.confirmPassword}
+                onChange={handleChange}
+                placeholder="Repita a senha"
+                required
+              />
+              <button type="button" className={styles.eyeBtn} onClick={() => setShowConfirm(!showConfirm)}>
+                {showConfirm ? '👁️' :'🫥' }
+              </button>
+            </div>
+          </div>
+
           <button type="submit" className={styles.btn} disabled={loading}>
             {loading ? 'Cadastrando...' : 'Criar conta'}
           </button>

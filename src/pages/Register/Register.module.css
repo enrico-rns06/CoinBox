@@ -96,6 +96,7 @@
   font-family: 'Plus Jakarta Sans', sans-serif;
   outline: none;
   transition: border 0.2s;
+  width: 100%;
 }
 
 .field input:focus {
@@ -104,6 +105,34 @@
 
 .field input::placeholder {
   color: rgba(226, 229, 231, 0.3);
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputWrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.eyeBtn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  line-height: 1;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.eyeBtn:hover {
+  opacity: 1;
 }
 
 .btn {

@@ -8,6 +8,7 @@ function Login() {
   const [form, setForm] = useState({ email: '', password: '' })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -83,10 +84,24 @@ function Login() {
             <label>Email</label>
             <input type="email" name="email" value={form.email} onChange={handleChange} placeholder="seu@email.com" required />
           </div>
+
           <div className={styles.field}>
             <label>Senha</label>
-            <input type="password" name="password" value={form.password} onChange={handleChange} placeholder="••••••••" required />
+            <div className={styles.inputWrapper}>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                value={form.password}
+                onChange={handleChange}
+                placeholder="••••••••"
+                required
+              />
+              <button type="button" className={styles.eyeBtn} onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? '👁️' : '🫥' }
+              </button>
+            </div>
           </div>
+
           <button type="submit" className={styles.btn} disabled={loading}>
             {loading ? 'Entrando...' : 'Entrar'}
           </button>
