@@ -1,12 +1,24 @@
 import { useState } from 'react'
 import styles from './TransactionForm.module.css'
 
+const categories = [
+  'Trabalho',
+  'Alimentação',
+  'Moradia',
+  'Transporte',
+  'Saúde',
+  'Lazer',
+  'Educação',
+  'Personalizada',
+]
+
 function TransactionForm({ onAdd }) {
   const [form, setForm] = useState({
     description: '',
     amount: '',
     type: 'income',
     category: '',
+    customCategory: '',
     date: '',
   })
 
@@ -17,7 +29,11 @@ function TransactionForm({ onAdd }) {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (!form.description || !form.amount || !form.category || !form.date) {
+    const finalCategory = form.category === 'Personalizada'
+      ? form.customCategory.trim()
+      : form.category
+
+    if (!form.description || !form.amount || !finalCategory || !form.date) {
       alert('Preencha todos os campos!')
       return
     }
@@ -27,11 +43,18 @@ function TransactionForm({ onAdd }) {
       description: form.description,
       amount: parseFloat(form.amount),
       type: form.type,
-      category: form.category,
+      category: finalCategory,
       date: form.date,
     })
 
-    setForm({ description: '', amount: '', type: 'income', category: '', date: '' })
+    setForm({
+      description: '',
+      amount: '',
+      type: 'income',
+      category: '',
+      customCategory: '',
+      date: '',
+    })
   }
 
   return (
@@ -67,16 +90,25 @@ function TransactionForm({ onAdd }) {
           <label>Categoria</label>
           <select name="category" value={form.category} onChange={handleChange}>
             <option value="">Selecione...</option>
-            <option value="Trabalho">Trabalho</option>
-            <option value="Alimentação">Alimentação</option>
-            <option value="Moradia">Moradia</option>
-            <option value="Transporte">Transporte</option>
-            <option value="Saúde">Saúde</option>
-            <option value="Lazer">Lazer</option>
-            <option value="Educação">Educação</option>
-            <option value="Outros">Outros</option>
+            {categories.map(cat => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
           </select>
         </div>
+
+        {form.category === 'Personalizada' && (
+          <div className={styles.field}>
+            <label>Nome da categoria</label>
+            <input
+              type="text"
+              name="customCategory"
+              value={form.customCategory}
+              onChange={handleChange}
+              placeholder="Ex: Investimentos, Pet..."
+              autoFocus
+            />
+          </div>
+        )}
 
         <button type="submit" className={styles.btn}>+ Adicionar Transação</button>
       </form>
