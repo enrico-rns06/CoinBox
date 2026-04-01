@@ -1,0 +1,98 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.trigger {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.07);
+  border: 0.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: #E2E5E7;
+  font-size: 13px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border 0.2s;
+  text-align: left;
+}
+
+.trigger:hover {
+  border-color: #EEC03E;
+}
+
+.icon {
+  font-size: 14px;
+  opacity: 0.5;
+}
+
+.calendar {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 100;
+  background: #0C2985;
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.calendar :global(.rdp) {
+  --rdp-accent-color: #EEC03E;
+  --rdp-background-color: rgba(238, 192, 62, 0.15);
+  --rdp-accent-color-dark: #EEC03E;
+  --rdp-background-color-dark: rgba(238, 192, 62, 0.15);
+  color: #E2E5E7;
+  margin: 0;
+}
+
+.calendar :global(.rdp-day_selected) {
+  background-color: #EEC03E !important;
+  color: #0C2985 !important;
+  font-weight: 700;
+}
+
+.calendar :global(.rdp-day:hover:not(.rdp-day_selected)) {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #E2E5E7;
+}
+
+.calendar :global(.rdp-caption_label) {
+  color: #EEC03E;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.calendar :global(.rdp-nav_button) {
+  color: #E2E5E7;
+}
+
+.calendar :global(.rdp-nav_button:hover) {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.calendar :global(.rdp-head_cell) {
+  color: rgba(226, 229, 231, 0.4);
+  font-size: 11px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.calendar :global(.rdp-day) {
+  color: #E2E5E7;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+}
+
+.calendar :global(.rdp-day_today:not(.rdp-day_selected)) {
+  border: 0.5px solid rgba(238, 192, 62, 0.4);
+  color: #EEC03E;
+}
+
+.calendar :global(.rdp-day_outside) {
+  color: rgba(226, 229, 231, 0.2) !important;
+}

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import DatePicker from '../DatePicker/DatePicker'
 import styles from './TransactionForm.module.css'
 
 const categories = [
@@ -82,7 +83,7 @@ function TransactionForm({ onAdd }) {
           </div>
           <div className={styles.field}>
             <label>Data</label>
-            <input type="date" name="date" value={form.date} onChange={handleChange} />
+            <DatePicker value={form.date} onChange={(date) => setForm({ ...form, date })} />
           </div>
         </div>
 
