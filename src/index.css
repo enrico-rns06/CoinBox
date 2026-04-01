@@ -19,7 +19,7 @@
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
   min-height: 100vh;
 }
 
