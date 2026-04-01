@@ -31,13 +31,7 @@ function TransactionForm({ onAdd }) {
       date: form.date,
     })
 
-    setForm({
-      description: '',
-      amount: '',
-      type: 'income',
-      category: '',
-      date: '',
-    })
+    setForm({ description: '', amount: '', type: 'income', category: '', date: '' })
   }
 
   return (
@@ -47,34 +41,26 @@ function TransactionForm({ onAdd }) {
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.field}>
           <label>Descrição</label>
-          <input
-            type="text"
-            name="description"
-            value={form.description}
-            onChange={handleChange}
-            placeholder="Ex: Salário, Mercado..."
-          />
+          <input type="text" name="description" value={form.description} onChange={handleChange} placeholder="Ex: Salário, Mercado..." />
         </div>
 
         <div className={styles.field}>
           <label>Valor (R$)</label>
-          <input
-            type="number"
-            name="amount"
-            value={form.amount}
-            onChange={handleChange}
-            placeholder="0,00"
-            min="0"
-            step="0.01"
-          />
+          <input type="number" name="amount" value={form.amount} onChange={handleChange} placeholder="0,00" min="0" step="0.01" />
         </div>
 
-        <div className={styles.field}>
-          <label>Tipo</label>
-          <select name="type" value={form.type} onChange={handleChange}>
-            <option value="income">💵 Receita</option>
-            <option value="expense">🧾 Despesa</option>
-          </select>
+        <div className={styles.row}>
+          <div className={styles.field}>
+            <label>Tipo</label>
+            <select name="type" value={form.type} onChange={handleChange}>
+              <option value="income">Receita</option>
+              <option value="expense">Despesa</option>
+            </select>
+          </div>
+          <div className={styles.field}>
+            <label>Data</label>
+            <input type="date" name="date" value={form.date} onChange={handleChange} />
+          </div>
         </div>
 
         <div className={styles.field}>
@@ -92,19 +78,7 @@ function TransactionForm({ onAdd }) {
           </select>
         </div>
 
-        <div className={styles.field}>
-          <label>Data</label>
-          <input
-            type="date"
-            name="date"
-            value={form.date}
-            onChange={handleChange}
-          />
-        </div>
-
-        <button type="submit" className={styles.btn}>
-          + Adicionar Transação
-        </button>
+        <button type="submit" className={styles.btn}>+ Adicionar Transação</button>
       </form>
     </div>
   )

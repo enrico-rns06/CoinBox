@@ -1,52 +1,59 @@
 .header {
-  background-color: var(--bg-secondary);
-  border-bottom: 2px solid var(--accent-yellow);
-  padding: 1rem 2rem;
+  background-color: #0C2985;
+  border-bottom: 1px solid rgba(238, 192, 62, 0.3);
+  padding: 0 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 64px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 10px;
 }
 
 .logoIcon {
-  font-size: 1.8rem;
+  width: 34px;
+  height: 34px;
+  background: #EEC03E;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logoText {
-  font-size: 1.5rem;
+  font-size: 20px;
   font-weight: 700;
-  color: var(--accent-yellow);
-  letter-spacing: 1px;
+  color: #EEC03E;
+  letter-spacing: 0.3px;
 }
 
 .right {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 }
 
 .userName {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+  font-size: 13px;
+  color: rgba(226, 229, 231, 0.6);
 }
 
 .logoutBtn {
-  background: none;
-  border: 1px solid var(--accent-yellow);
-  color: var(--accent-yellow);
-  padding: 0.4rem 1rem;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  color: #E2E5E7;
+  padding: 6px 16px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   transition: all 0.2s;
 }
 
 .logoutBtn:hover {
-  background-color: var(--accent-yellow);
-  color: #0C2985;
+  background: rgba(255, 255, 255, 0.15);
 }

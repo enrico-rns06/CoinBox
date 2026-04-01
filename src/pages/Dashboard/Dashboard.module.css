@@ -2,13 +2,14 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: #0a1e5e;
 }
 
 .main {
-  padding: 2rem;
+  padding: 24px 32px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 20px;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
@@ -16,20 +17,20 @@
 
 .topSection {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .bottomSection {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 16px;
 }
 
 .left, .right {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 16px;
 }
 
 .loading {
@@ -37,6 +38,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent-yellow);
-  font-size: 1.2rem;
+  color: #EEC03E;
+  font-size: 1rem;
+  background: #0a1e5e;
 }

@@ -1,33 +1,90 @@
 .card {
-  background-color: var(--bg-card);
-  border-radius: 12px;
-  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  border: 1px solid var(--border);
+  gap: 8px;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cardBlue {
+  background: linear-gradient(135deg, #0C2985 0%, #1a3faa 100%);
+  border: 0.5px solid rgba(238, 192, 62, 0.3);
+}
+
+.blob {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(238, 192, 62, 0.12);
 }
 
 .label {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
+}
+
+.labelBlue {
+  color: rgba(226, 229, 231, 0.6);
+}
+
+.labelDefault {
+  color: rgba(226, 229, 231, 0.5);
 }
 
 .value {
-  font-size: 1.75rem;
+  font-size: 26px;
   font-weight: 700;
+  line-height: 1;
 }
 
-.balance .value {
-  color: var(--accent-yellow);
+.valueBlue {
+  color: #EEC03E;
 }
 
-.income .value {
-  color: #00c896;
+.valueGreen {
+  color: #4ade80;
 }
 
-.expense .value {
-  color: var(--accent-red);
+.valueRed {
+  color: #f87171;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.badgeGreen {
+  background: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+}
+
+.badgeRed {
+  background: rgba(248, 113, 113, 0.15);
+  color: #f87171;
+}
+
+.trend {
+  font-size: 11px;
+  color: rgba(226, 229, 231, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.trendUp {
+  color: #4ade80;
 }
