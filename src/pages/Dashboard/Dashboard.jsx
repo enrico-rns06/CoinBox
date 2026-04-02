@@ -5,6 +5,7 @@ import Summary from '../../components/Summary/Summary'
 import TransactionList from '../../components/TransactionList/TransactionList'
 import TransactionForm from '../../components/TransactionForm/TransactionForm'
 import Chart from '../../components/Chart/Chart'
+import EditModal from '../../components/EditModal/EditModal'
 import api from '../../services/api'
 import styles from './Dashboard.module.css'
 
@@ -12,6 +13,7 @@ function Dashboard() {
   const navigate = useNavigate()
   const [transactions, setTransactions] = useState([])
   const [loading, setLoading] = useState(true)
+  const [editingTransaction, setEditingTransaction] = useState(null)
 
   const user = JSON.parse(localStorage.getItem('coinbox_user'))
 
@@ -48,6 +50,27 @@ function Dashboard() {
     }
   }
 
+  const handleEdit = (transaction) => {
+    setEditingTransaction(transaction)
+  }
+
+  const handleSave = async (updated) => {
+    try {
+      await api.delete(`/transactions/${updated.id}`)
+      const { data } = await api.post('/transactions', {
+        description: updated.description,
+        amount: updated.amount,
+        type: updated.type,
+        category: updated.category,
+        date: updated.date,
+      })
+      setTransactions(transactions.map(t => t.id === updated.id ? data : t))
+      setEditingTransaction(null)
+    } catch (error) {
+      console.error('Erro ao editar transação:', error)
+    }
+  }
+
   const handleLogout = () => {
     localStorage.removeItem('coinbox_token')
     localStorage.removeItem('coinbox_user')
@@ -74,6 +97,7 @@ function Dashboard() {
             <TransactionList
               transactions={transactions}
               onDelete={handleDelete}
+              onEdit={handleEdit}
             />
           </div>
           <div className={styles.right}>
@@ -82,6 +106,14 @@ function Dashboard() {
           </div>
         </div>
       </main>
+
+      {editingTransaction && (
+        <EditModal
+          transaction={editingTransaction}
+          onSave={handleSave}
+          onClose={() => setEditingTransaction(null)}
+        />
+      )}
     </div>
   )
 }

@@ -11,7 +11,7 @@ const categoryIcons = {
   'Outros': '📦',
 }
 
-function TransactionList({ transactions, onDelete }) {
+function TransactionList({ transactions, onDelete, onEdit }) {
   const format = (value) =>
     value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
@@ -41,6 +41,7 @@ function TransactionList({ transactions, onDelete }) {
               <span className={`${styles.amount} ${t.type === 'income' ? styles.amountIncome : styles.amountExpense}`}>
                 {t.type === 'income' ? '+' : '-'} {format(t.amount)}
               </span>
+              <button className={styles.editBtn} onClick={() => onEdit(t)}>✏️</button>
               <button className={styles.deleteBtn} onClick={() => onDelete(t.id)}>✕</button>
             </div>
           </li>
