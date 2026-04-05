@@ -22,6 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .logoText {
@@ -52,8 +53,24 @@
   font-size: 12px;
   font-family: 'Plus Jakarta Sans', sans-serif;
   transition: all 0.2s;
+  white-space: nowrap;
 }
 
 .logoutBtn:hover {
   background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 1rem;
+    height: 56px;
+  }
+
+  .userName {
+    display: none;
+  }
+
+  .logoText {
+    font-size: 18px;
+  }
 }

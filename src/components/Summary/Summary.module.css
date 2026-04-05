@@ -42,7 +42,8 @@
 .value {
   font-size: 26px;
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.2;
+  word-break: break-word;
 }
 
 .valueBlue {
@@ -87,4 +88,25 @@
 
 .trendUp {
   color: #4ade80;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 16px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .blob {
+    display: none;
+  }
+
+  .value {
+    font-size: 20px;
+  }
+
+  .label {
+    font-size: 10px;
+  }
 }

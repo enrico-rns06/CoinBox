@@ -85,3 +85,9 @@
 .btn:hover {
   opacity: 0.88;
 }
+
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

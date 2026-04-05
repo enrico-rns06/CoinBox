@@ -42,3 +42,19 @@
   font-size: 1rem;
   background: #0a1e5e;
 }
+
+@media (max-width: 768px) {
+  .main {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .topSection {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .bottomSection {
+    grid-template-columns: 1fr;
+  }
+}
