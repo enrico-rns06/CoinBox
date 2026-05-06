@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styles from './TransactionList.module.css'
 
 const categoryIcons = {
@@ -12,13 +13,22 @@ const categoryIcons = {
 }
 
 function TransactionList({ transactions, onDelete, onEdit }) {
+  const [showAll, setShowAll] = useState(false)
+
   const format = (value) =>
     value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+
+  const displayed = showAll ? transactions : transactions.slice(0, 5)
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <h2 className={styles.title}>Transações recentes</h2>
+        {transactions.length > 5 && (
+          <button className={styles.toggleBtn} onClick={() => setShowAll(!showAll)}>
+            {showAll ? 'Ver menos' : `Ver mais (${transactions.length - 5})`}
+          </button>
+        )}
       </div>
 
       {transactions.length === 0 && (
@@ -26,7 +36,7 @@ function TransactionList({ transactions, onDelete, onEdit }) {
       )}
 
       <ul className={styles.list}>
-        {transactions.map(t => (
+        {displayed.map(t => (
           <li key={t.id} className={styles.item}>
             <div className={styles.itemLeft}>
               <div className={`${styles.icon} ${t.type === 'income' ? styles.iconIncome : styles.iconExpense}`}>
@@ -47,6 +57,12 @@ function TransactionList({ transactions, onDelete, onEdit }) {
           </li>
         ))}
       </ul>
+
+      {showAll && transactions.length > 5 && (
+        <button className={styles.collapseBtn} onClick={() => setShowAll(false)}>
+          Ver menos
+        </button>
+      )}
     </div>
   )
 }
